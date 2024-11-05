@@ -12,7 +12,7 @@
     <h2>남은 할 일</h2>
     <p>{{ todos.length > 0 ? '아직 남았다.' : '퇴근!' }}</p>
     <p>{{ restOfTodos }}</p>
-    <p>{{ }}</p>
+    <p>{{ getRestOfTodos() }}</p>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -27,10 +27,16 @@
           { text: 'TIL 작성' }
         ])
 
+        // computed
         const restOfTodos = computed(() => {
           return todos.value.length > 0 ? '아직 남았다.' : '퇴근!'
         })
+        // console.log(restOfTodos.value)
 
+        //method
+        const getRestOfTodos = function () {
+          return todos.value.length > 0 ? '아직 남았다.' : '퇴근!'
+        }
 
         // computed 주의사항
         const a = ref(0)
@@ -45,7 +51,8 @@
 
         return {
           todos,
-          restOfTodos
+          restOfTodos,
+          getRestOfTodos
         }
       }
     })
